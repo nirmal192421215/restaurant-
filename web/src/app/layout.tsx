@@ -40,6 +40,11 @@ export const metadata: Metadata = {
     description: "Experience the finest South Indian flavors.",
     images: ["/banana_leaf_full_feast_1778343522477.png"],
   },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
