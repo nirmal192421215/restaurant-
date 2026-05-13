@@ -29,7 +29,7 @@ export default function MobileActions() {
       </a>
 
       {/* Premium Mobile Bottom Navigation */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] px-4 pb-6 pt-2 pointer-events-none">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] px-4 pb-4 pt-2 pointer-events-none">
         <div className="max-w-md mx-auto bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] flex items-center justify-around p-2 pointer-events-auto">
           {navItems.map((item) => (
             <button

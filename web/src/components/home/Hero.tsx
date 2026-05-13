@@ -128,7 +128,7 @@ export default function Hero() {
   const { openDrawer } = useReservation();
 
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
+    <section className="relative w-full min-h-[80vh] md:min-h-[90vh] flex items-center pt-20 md:pt-24 pb-8 md:pb-12 overflow-hidden">
 
       {/* ── LAYERED BACKGROUND SYSTEM ── */}
 
@@ -336,7 +336,7 @@ export default function Hero() {
         >
           {HERO_SLIDES.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <div className="relative w-full aspect-square md:aspect-[4/3] max-w-[800px] mx-auto rounded-[2rem] overflow-hidden bg-gray-900 group border border-white/10">
+              <div className="relative w-full aspect-[4/5] md:aspect-[4/3] max-w-[800px] mx-auto rounded-[2rem] overflow-hidden bg-gray-900 group border border-white/10">
 
                 {/* Full Background Image */}
                 <div className="absolute inset-0 z-0">
