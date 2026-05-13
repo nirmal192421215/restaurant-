@@ -472,23 +472,27 @@ export default function MenuSystem() {
             Experience authentic flavors mapped to traditional meal times. From the morning sunrise tiffin to the bustling street food of the night.
           </p>
           
-          <div className="flex p-1 bg-[var(--color-brand-beige)] rounded-full mb-8 relative shadow-inner overflow-x-auto no-scrollbar max-w-full">
+          <div className="flex p-1.5 bg-[var(--color-brand-beige)] rounded-2xl md:rounded-full mb-8 relative shadow-inner overflow-x-auto no-scrollbar max-w-full">
             {(["Breakfast", "Lunch", "Dinner"] as MealTime[]).map((meal) => (
               <button
                 key={meal}
                 onClick={() => setActiveMeal(meal)}
-                className={`relative px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold transition-colors z-10 whitespace-nowrap ${
+                className={`relative px-5 md:px-8 py-3.5 md:py-3 rounded-xl md:rounded-full text-xs md:text-sm font-bold transition-all z-10 whitespace-nowrap flex-1 min-w-[100px] ${
                   activeMeal === meal ? "text-white" : "text-[var(--color-brand-charcoal)]/60 hover:text-[var(--color-brand-charcoal)]"
                 }`}
               >
                 {activeMeal === meal && (
                   <motion.div
                     layoutId="mealSelector"
-                    className="absolute inset-0 bg-[var(--color-brand-orange)] rounded-full shadow-md -z-10"
+                    className="absolute inset-0 bg-[var(--color-brand-orange)] rounded-xl md:rounded-full shadow-lg -z-10"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
-                {meal === "Breakfast" ? "காலை" : meal === "Lunch" ? "மதியம்" : "இரவு"} · {meal}
+                <span className="flex flex-col md:flex-row items-center gap-0 md:gap-2">
+                  <span className="text-[10px] md:text-xs opacity-80 md:opacity-100">{meal === "Breakfast" ? "காலை" : meal === "Lunch" ? "மதியம்" : "இரவு"}</span>
+                  <span className="hidden md:inline opacity-40">·</span>
+                  <span>{meal}</span>
+                </span>
               </button>
             ))}
           </div>
@@ -632,7 +636,7 @@ export default function MenuSystem() {
         )}
       </div>
 
-      {/* Floating Cart Button */}
+      {/* Floating Cart Button - Removed for Mobile to avoid duplication with Bottom Nav, kept for Desktop if needed */}
       <AnimatePresence>
         {totalItems > 0 && (
           <motion.button
@@ -641,21 +645,23 @@ export default function MenuSystem() {
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
             onClick={openCart}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[900] bg-[var(--color-brand-charcoal)] hover:bg-[var(--color-brand-orange)] text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 transition-colors duration-300 min-w-[280px]"
+            className="hidden lg:flex fixed bottom-8 left-1/2 -translate-x-1/2 z-[900] bg-[var(--color-brand-charcoal)] hover:bg-[var(--color-brand-orange)] text-white px-8 py-5 rounded-2xl shadow-2xl items-center gap-6 transition-colors duration-300 min-w-[320px]"
           >
             <div className="relative">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-2 -right-2 w-4 h-4 bg-[var(--color-brand-orange)] group-hover:bg-white group-hover:text-[var(--color-brand-orange)] rounded-full text-[9px] font-black flex items-center justify-center">
+              <ShoppingBag className="w-6 h-6" />
+              <span className="absolute -top-2 -right-2 w-5 h-5 bg-[var(--color-brand-orange)] rounded-full text-[10px] font-black flex items-center justify-center border-2 border-[var(--color-brand-charcoal)]">
                 {totalItems}
               </span>
             </div>
-            <span className="font-bold text-sm flex-1 text-left">
-              {totalItems} {totalItems === 1 ? "item" : "items"} added
-            </span>
-            <span className="font-black text-base">₹{totalPrice}</span>
+            <div className="flex flex-col flex-1 text-left">
+              <span className="font-bold text-sm leading-tight">{totalItems} {totalItems === 1 ? "Item" : "Items"}</span>
+              <span className="text-[10px] text-white/60 uppercase tracking-widest">Ready to order</span>
+            </div>
+            <span className="font-black text-xl">₹{totalPrice}</span>
           </motion.button>
         )}
       </AnimatePresence>
     </section>
   );
 }
+
