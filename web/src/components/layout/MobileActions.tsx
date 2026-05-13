@@ -18,12 +18,12 @@ export default function MobileActions() {
 
   return (
     <>
-      {/* WhatsApp Floating Button - Moved slightly up to avoid overlapping nav */}
+      {/* WhatsApp Floating Button - Moved higher to avoid overlapping nav */}
       <a
         href="https://wa.me/919597574989"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-24 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:scale-110 transition-transform flex items-center justify-center group"
+        className="fixed bottom-28 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:scale-110 transition-transform flex items-center justify-center group"
       >
         <MessageCircle className="w-6 h-6" />
       </a>

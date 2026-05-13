@@ -293,8 +293,15 @@ export default function Hero() {
 
         @media (max-width: 768px) {
           .hero-swiper .swiper-slide {
-            width: 90%;
-            filter: blur(2px) brightness(0.6);
+            width: 88%;
+            filter: none !important;
+            opacity: 0.6;
+            transform: scale(0.9);
+          }
+          .hero-swiper .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            filter: none !important;
           }
           .hero-swiper .swiper-button-next,
           .hero-swiper .swiper-button-prev {
