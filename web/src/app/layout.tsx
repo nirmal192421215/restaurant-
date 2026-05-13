@@ -18,6 +18,28 @@ export const metadata: Metadata = {
   title: "DND Fine Dining | Authentic South Indian Culinary Heritage",
   description: "Experience the finest South Indian flavors with our traditional Banana Leaf meals, live grills, and premium buffet. Where Every Meal Becomes a Memory.",
   keywords: ["South Indian Restaurant", "Fine Dining", "Banana Leaf Meals", "Tamil Nadu Cuisine", "DND Fine Dining", "Live Grill", "Buffet"],
+  openGraph: {
+    title: "DND Fine Dining | Authentic South Indian Culinary Heritage",
+    description: "Experience the finest South Indian flavors. Where Every Meal Becomes a Memory.",
+    url: "https://restaurant-nk.vercel.app/",
+    siteName: "DND Fine Dining",
+    images: [
+      {
+        url: "/banana_leaf_full_feast_1778343522477.png",
+        width: 1200,
+        height: 630,
+        alt: "DND Fine Dining - Traditional Banana Leaf Feast",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DND Fine Dining | South Indian Culinary Heritage",
+    description: "Experience the finest South Indian flavors.",
+    images: ["/banana_leaf_full_feast_1778343522477.png"],
+  },
 };
 
 export default function RootLayout({
