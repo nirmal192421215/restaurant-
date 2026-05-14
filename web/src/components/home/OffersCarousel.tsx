@@ -108,7 +108,7 @@ export default function OffersCarousel() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="min-w-[320px] md:min-w-[400px] w-full max-w-[420px] snap-start shrink-0 group"
+              className="min-w-[280px] md:min-w-[400px] w-[85%] md:w-full max-w-[420px] snap-start shrink-0 group"
             >
               <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 h-full flex flex-col relative">
                 

@@ -518,7 +518,7 @@ export default function MenuSystem() {
         {/* Menu Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredMenu.map((item) => (
@@ -532,7 +532,7 @@ export default function MenuSystem() {
                 className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-[var(--color-brand-beige)] transition-all group flex flex-col"
               >
                 {/* Image Section */}
-                <div className="relative h-60 md:h-64 overflow-hidden">
+                <div className="relative h-32 md:h-64 overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.name} 
@@ -540,8 +540,8 @@ export default function MenuSystem() {
                   />
                   
                   {/* Veg/Non-Veg Indicator */}
-                  <div className="absolute top-4 right-4 bg-white p-1 rounded shadow-sm border border-gray-100">
-                    <div className={`w-3 h-3 rounded-sm ${item.isVeg ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                  <div className="absolute top-2 right-2 bg-white p-0.5 rounded shadow-sm border border-gray-100">
+                    <div className={`w-2 h-2 rounded-sm ${item.isVeg ? 'bg-green-500' : 'bg-red-500'}`}></div>
                   </div>
 
                   {/* Bestseller Badge */}
@@ -563,26 +563,26 @@ export default function MenuSystem() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-2">
+                <div className="p-3 md:p-6 flex flex-col flex-grow">
+                  <div className="flex flex-col md:flex-row justify-between items-start mb-2">
                     <div>
-                      <span className="text-[var(--color-brand-orange)] text-[10px] font-bold uppercase tracking-widest mb-1 block">
+                      <span className="text-[var(--color-brand-orange)] text-[8px] md:text-[10px] font-bold uppercase tracking-widest mb-0.5 block">
                         {item.tamilName}
                       </span>
-                      <h3 className="text-lg md:text-xl font-heading font-bold text-[var(--color-brand-charcoal)] group-hover:text-[var(--color-brand-orange)] transition-colors pr-4 leading-tight">
+                      <h3 className="text-sm md:text-xl font-heading font-bold text-[var(--color-brand-charcoal)] group-hover:text-[var(--color-brand-orange)] transition-colors pr-2 leading-tight">
                         {item.name}
                       </h3>
                     </div>
-                    <span className="text-lg md:text-xl font-bold text-[var(--color-brand-orange)]">₹{item.price}</span>
+                    <span className="text-sm md:text-xl font-bold text-[var(--color-brand-orange)] mt-1">₹{item.price}</span>
                   </div>
                   
-                  <p className="text-[var(--color-brand-charcoal)]/80 text-xs md:text-sm mb-4 line-clamp-2 italic">
+                  <p className="hidden md:block text-[var(--color-brand-charcoal)]/80 text-xs md:text-sm mb-4 line-clamp-2 italic">
                     {item.description}
                   </p>
 
                   <div className="mt-auto">
-                    <div className="text-[9px] uppercase tracking-widest font-bold text-[var(--color-brand-charcoal)]/40 mb-1">Ingredients</div>
-                    <p className="text-[10px] text-[var(--color-brand-charcoal)]/60 leading-relaxed mb-6 h-8 line-clamp-2">
+                    <div className="hidden md:block text-[9px] uppercase tracking-widest font-bold text-[var(--color-brand-charcoal)]/40 mb-1">Ingredients</div>
+                    <p className="hidden md:block text-[10px] text-[var(--color-brand-charcoal)]/60 leading-relaxed mb-6 h-8 line-clamp-2">
                       {item.ingredients}
                     </p>
 
@@ -596,28 +596,28 @@ export default function MenuSystem() {
                           image: item.image,
                           isVeg: item.isVeg,
                         })}
-                        className="w-full py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 bg-[var(--color-brand-beige)] text-[var(--color-brand-charcoal)] hover:bg-[var(--color-brand-charcoal)] hover:text-white shadow-sm"
+                        className="w-full py-2 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold transition-all flex items-center justify-center gap-1 md:gap-2 bg-[var(--color-brand-beige)] text-[var(--color-brand-charcoal)] hover:bg-[var(--color-brand-charcoal)] hover:text-white shadow-sm"
                       >
-                        <Plus className="w-4 h-4" /> Add to Order
+                        <Plus className="w-3 h-3 md:w-4 md:h-4" /> Add
                       </button>
                     ) : (
                       <motion.div
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
-                        className="w-full flex items-center justify-between bg-[var(--color-brand-orange)] rounded-xl overflow-hidden shadow-md"
+                        className="w-full flex items-center justify-between bg-[var(--color-brand-orange)] rounded-lg md:rounded-xl overflow-hidden shadow-md"
                       >
                         <button
                           onClick={() => updateQuantity(item.id, getItemQuantity(item.id) - 1)}
-                          className="px-4 py-3 text-white hover:bg-black/10 transition-colors"
+                          className="px-2 md:px-4 py-2 md:py-3 text-white hover:bg-black/10 transition-colors"
                         >
-                          <Minus className="w-4 h-4" />
+                          <Minus className="w-3 h-3 md:w-4 md:h-4" />
                         </button>
-                        <span className="text-white font-bold text-base">{getItemQuantity(item.id)}</span>
+                        <span className="text-white font-bold text-xs md:text-base">{getItemQuantity(item.id)}</span>
                         <button
                           onClick={() => updateQuantity(item.id, getItemQuantity(item.id) + 1)}
-                          className="px-4 py-3 text-white hover:bg-black/10 transition-colors"
+                          className="px-2 md:px-4 py-2 md:py-3 text-white hover:bg-black/10 transition-colors"
                         >
-                          <Plus className="w-4 h-4" />
+                          <Plus className="w-3 h-3 md:w-4 md:h-4" />
                         </button>
                       </motion.div>
                     )}

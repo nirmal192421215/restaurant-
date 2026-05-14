@@ -71,7 +71,7 @@ export default function Gallery() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px] grid-flow-dense">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 auto-rows-[160px] md:auto-rows-[250px] grid-flow-dense">
           {IMAGES.map((img, index) => (
             <motion.div
               key={img.id}
