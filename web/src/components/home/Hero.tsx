@@ -128,7 +128,7 @@ export default function Hero() {
   const { openDrawer } = useReservation();
 
   return (
-    <section className="relative w-full min-h-[75vh] md:min-h-[90vh] flex items-center pt-14 md:pt-24 pb-4 md:pb-12 overflow-hidden">
+    <section className="relative w-full min-h-[75vh] md:min-h-[90vh] flex items-center pt-20 md:pt-24 pb-4 md:pb-12 overflow-hidden">
 
       {/* ── LAYERED BACKGROUND SYSTEM ── */}
 

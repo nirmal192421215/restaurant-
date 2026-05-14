@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow pt-[104px] lg:pt-0">
+      <main className="flex-grow">
         <Hero />
         <Reservation />
         <WhyChooseUs />
