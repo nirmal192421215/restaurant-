@@ -436,6 +436,7 @@ const MENU_ITEMS: MenuItem[] = [
 export default function MenuSystem() {
   const [activeMeal, setActiveMeal] = useState<MealTime>("Dinner");
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const { cartItems, addItem, updateQuantity, totalItems, totalPrice, openCart } = useCart();
 
   useEffect(() => {
@@ -453,7 +454,10 @@ export default function MenuSystem() {
   const filteredMenu = MENU_ITEMS.filter(item => {
     const timeMatch = item.mealTime.includes(activeMeal);
     const categoryMatch = activeCategory === "All" || item.category.includes(activeCategory);
-    return timeMatch && categoryMatch;
+    const searchMatch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                      item.tamilName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      item.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return timeMatch && categoryMatch && searchMatch;
   });
 
   const getItemQuantity = (id: string) =>
@@ -497,21 +501,40 @@ export default function MenuSystem() {
             ))}
           </div>
 
-          {/* Categories */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                  activeCategory === cat 
-                    ? "bg-[var(--color-brand-charcoal)] text-white" 
-                    : "bg-white border border-[var(--color-brand-beige)] text-[var(--color-brand-charcoal)]/70 hover:border-[var(--color-brand-charcoal)]/30 shadow-sm"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Search & Categories Sticky Container */}
+          <div className="sticky top-16 z-30 -mx-4 px-4 py-4 bg-[var(--color-brand-cream)]/95 backdrop-blur-md border-b border-[var(--color-brand-beige)]/50 lg:relative lg:top-0 lg:border-none lg:bg-transparent lg:px-0 lg:py-0">
+            {/* Search Input */}
+            <div className="max-w-md mx-auto mb-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search your favorite food..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-white/80 border border-[var(--color-brand-beige)] rounded-2xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-orange)]/20 transition-all shadow-sm"
+                />
+                <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--color-brand-charcoal)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Categories */}
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 md:px-5 py-2 rounded-full text-[10px] md:text-sm font-bold uppercase tracking-wider transition-all ${
+                    activeCategory === cat 
+                      ? "bg-[var(--color-brand-orange)] text-white shadow-lg shadow-[var(--color-brand-orange)]/20" 
+                      : "bg-white border border-[var(--color-brand-beige)] text-[var(--color-brand-charcoal)]/60 hover:border-[var(--color-brand-charcoal)]/30 shadow-sm"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
